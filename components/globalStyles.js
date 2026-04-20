@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+/*
 const colors = {
 	primary: 	'#2563eb',
 	danger: 	'#dc2626',
@@ -9,6 +10,7 @@ const colors = {
 	white:		'#ffffff',
 	border:		'#d1d5db'
 };
+*/
 
 export const globalStyles = StyleSheet.create({
 	container: {
@@ -70,6 +72,18 @@ export const globalStyles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center'
 	},
+	leftVehicleBtn: {
+		backgroundColor: 'white',
+		borderRadius: 5,
+		padding: 10,
+		borderWidth: 2		
+	},
+	rightVehicleBtn: {
+		backgroundColor: 'white',
+		borderRadius: 5,
+		padding: 10,
+		borderWidth: 2
+	},
 	deleteVehicleBtn: {
 		backgroundColor: 'red',
 		borderRadius: 5,
@@ -91,6 +105,16 @@ export const globalStyles = StyleSheet.create({
 		borderRadius: 5,
 		padding: 10,
 		borderWidth: 2
+	},
+	aceptBtn: {
+		backgroundColor: 'green',
+		borderRadius: '50%',
+		padding: 10,		
+	},
+	setImgBtn: {
+		backgroundColor: 'blue',
+		borderRadius: '50%',
+		padding: 10,
 	},
 	image: {
 		width: 120,

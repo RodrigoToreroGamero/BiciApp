@@ -19,8 +19,7 @@ export default function EditScreen({ setCurrentScreen }) {
 				<View>
 					<Image />
 					<TouchableOpacity
-					style={globalStyles.setImgBtn}
-					onPress={()=> setCurrentScreen('delete')}					
+					style={globalStyles.setImgBtn}										
 					>
 					</TouchableOpacity>
 				</View>
@@ -48,7 +47,7 @@ export default function EditScreen({ setCurrentScreen }) {
 					</TouchableOpacity>
 					
 					<TouchableOpacity
-					style={globalStyles.registerVehicleBtn}
+					style={globalStyles.aceptBtn}
 					onPress={()=> setCurrentScreen('select')}					
 					>					
 					</TouchableOpacity>

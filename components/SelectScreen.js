@@ -9,54 +9,64 @@ export default function SelectScreen({ setCurrentScreen }) {
 		style={globalStyles.container}
 		>
 			<View>
-				<Text style={globalStyles.titleText}>
+				<Text
+				style={globalStyles.titleText}
+				>
 					Tus Vehículos
 				</Text>
 			</View>
-			<View style={globalStyles.background}>
+			<View
+			style={globalStyles.background}
+			>
 				<Image />
 				
-				<TouchableOpacity
-				onPress={()=> selectNextVehicle()}
-				style={globalStyles.leftVehicleByn}
-				>					
-				</TouchableOpacity>
+				<View
+				style={globalStyles.horizontalBtns}
+				>
+					<TouchableOpacity
+					onPress={()=> selectNextVehicle()}
+					style={globalStyles.leftVehicleBtn}
+					>					
+					</TouchableOpacity>
+					
+					<TouchableOpacity
+					onPress={()=> selectNextVehicle()}
+					style={globalStyles.rightVehicleBtn}
+					>					
+					</TouchableOpacity>
+				</View>
 				
-				<TouchableOpacity
-				onPress={()=> selectNextVehicle()}
-				style={globalStyles.rightVehicleBtn}
-				>					
-				</TouchableOpacity>
-				
-				<View style={globalStyles.center}>
+				<View
+				style={globalStyles.center}
+				>
 					<Text>Código de barras</Text>				
 					<Text>Marca</Text>					
 					<Text>Color</Text>					
 					<Text>Características</Text>
 				</View>
 				
-				<View style={globalStyles.horizontalBtns}>
+				<View
+				style={globalStyles.horizontalBtns}
+				>
 					<TouchableOpacity
-					onPress={()=> setCurrentScreen('delete')}
 					style={globalStyles.deleteVehicleBtn}
+					onPress={()=> setCurrentScreen('delete')}					
 					>					
 					</TouchableOpacity>
 					
 					<TouchableOpacity
-					onPress={()=> setCurrentScreen('edit')}
 					style={globalStyles.editVehicleBtn}
+					onPress={()=> setCurrentScreen('edit')}					
 					>					
 					</TouchableOpacity>
 					
 					<TouchableOpacity
-					onPress={()=> setCurrentScreen('register')}
 					style={globalStyles.registerVehicleBtn}
+					onPress={()=> setCurrentScreen('register')}					
 					>					
 					</TouchableOpacity>
-				</View>
-							
+				</View>							
 			</View>
 		</View>
-	);
-	
+	);	
 }

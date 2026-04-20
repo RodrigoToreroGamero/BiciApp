@@ -22,8 +22,7 @@ export default function RegisterScreen({ setCurrentScreen }) {
 					//style={globalStyles.image}
 					/>
 					<TouchableOpacity
-					style={globalStyles.setImgBtn}
-					onPress={()=> setCurrentScreen('delete')}					
+					style={globalStyles.setImgBtn}									
 					>
 					</TouchableOpacity>
 				</View>
@@ -50,7 +49,7 @@ export default function RegisterScreen({ setCurrentScreen }) {
 					</TouchableOpacity>
 					
 					<TouchableOpacity					
-					style={globalStyles.registerVehicleBtn}
+					style={globalStyles.aceptBtn}
 					onPress={()=> setCurrentScreen('select')}
 					>					
 					</TouchableOpacity>
