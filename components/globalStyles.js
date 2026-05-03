@@ -18,6 +18,7 @@ export const globalStyles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'stretch',
 		paddingHorizontal: 24,
+		backgroundColor: 'rgb(150, 150, 150)'
 		//backgroundColor: colors.background
 	},
 	background: {
@@ -76,13 +77,13 @@ export const globalStyles = StyleSheet.create({
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		borderWidth: 2		
+		//borderWidth: 2		
 	},
 	rightVehicleBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		borderWidth: 2
+		//borderWidth: 2
 	},
 	deleteVehicleBtn: {
 		backgroundColor: 'red',
@@ -93,7 +94,7 @@ export const globalStyles = StyleSheet.create({
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		borderWidth: 2
+		//borderWidth: 2
 	},
 	registerVehicleBtn: {
 		backgroundColor: 'blue',
@@ -104,10 +105,10 @@ export const globalStyles = StyleSheet.create({
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		borderWidth: 2
+		//borderWidth: 2
 	},
-	aceptBtn: {
-		backgroundColor: 'green',
+	acceptBtn: {
+		backgroundColor: 'rgb(0,255,0)',
 		borderRadius: '50%',
 		padding: 10,		
 	},

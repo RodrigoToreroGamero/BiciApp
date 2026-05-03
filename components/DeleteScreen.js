@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function DeleteScreen({ setCurrentScreen }) {
 	
@@ -14,7 +15,10 @@ export default function DeleteScreen({ setCurrentScreen }) {
 				</Text>
 			</View>
 			<View style={globalStyles.background}>
-				<Image />
+				<View>
+					<Image />
+					<Ionicons name='image' size={28} color='white' />
+				</View>
 										
 				<View style={globalStyles.center}>				
 					<Text>Marca</Text>					
@@ -26,13 +30,15 @@ export default function DeleteScreen({ setCurrentScreen }) {
 					<TouchableOpacity
 					onPress={()=> setCurrentScreen('select')}
 					style={globalStyles.previousScreenBtn}
-					>					
+					>
+						<Ionicons name='return-down-back' size={28} color='black' />											
 					</TouchableOpacity>
 					
 					<TouchableOpacity
 					onPress={()=> setCurrentScreen('select')}
 					style={globalStyles.deleteVehicleBtn}
-					>					
+					>
+						<Ionicons name='trash' size={28} color='white' />					
 					</TouchableOpacity>									
 				</View>
 							

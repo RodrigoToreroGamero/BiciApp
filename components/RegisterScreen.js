@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, TextInput } from 'react-native';
 import { globalStyles } from './globalStyles';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function RegisterScreen({ setCurrentScreen }) {
 	
@@ -21,9 +22,11 @@ export default function RegisterScreen({ setCurrentScreen }) {
 					//source={image ? { uri: image } : null}
 					//style={globalStyles.image}
 					/>
+					<Ionicons name='image' size={28} color='white' />
 					<TouchableOpacity
 					style={globalStyles.setImgBtn}									
 					>
+						<Ionicons name='add-outline' size={28} color='white' />
 					</TouchableOpacity>
 				</View>
 								
@@ -45,13 +48,15 @@ export default function RegisterScreen({ setCurrentScreen }) {
 					<TouchableOpacity
 					style={globalStyles.editVehicleBtn}
 					onPress={()=> setCurrentScreen('select')}				
-					>					
+					>		
+						<Ionicons name='return-down-back' size={28} color='black' />						
 					</TouchableOpacity>
 					
 					<TouchableOpacity					
-					style={globalStyles.aceptBtn}
+					style={globalStyles.acceptBtn}
 					onPress={()=> setCurrentScreen('select')}
-					>					
+					>
+						<Ionicons name='checkmark' size={28} color='black' />					
 					</TouchableOpacity>
 				</View>							
 			</View>
