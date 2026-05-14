@@ -2,23 +2,19 @@ import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
+import ImageContainer from './ImageContainer';
 
 export default function DeleteScreen({ setCurrentScreen }) {
 	
+	const [image, setImage] = useState("");
+	
 	return (
-		<View
-		style={globalStyles.container}
-		>
+		<View style={globalStyles.container}>
 			<View>
-				<Text style={globalStyles.titleText}>
-					¿Eliminar tu Vehículo?
-				</Text>
+				<Text style={globalStyles.titleText}>¿Eliminar tu Vehículo?</Text>
 			</View>
 			<View style={globalStyles.background}>
-				<View>
-					<Image />
-					<Ionicons name='image' size={28} color='white' />
-				</View>
+				<ImageContainer image={image} setImage={setImage} useSetBtn={false} />
 										
 				<View style={globalStyles.center}>				
 					<Text>Marca</Text>					
@@ -27,23 +23,19 @@ export default function DeleteScreen({ setCurrentScreen }) {
 				</View>
 				
 				<View style={globalStyles.horizontalBtns}>
-					<TouchableOpacity
-					onPress={()=> setCurrentScreen('select')}
-					style={globalStyles.previousScreenBtn}
+					<TouchableOpacity style={globalStyles.previousScreenBtn}
+						onPress={()=> setCurrentScreen('select')}					
 					>
 						<Ionicons name='return-down-back' size={28} color='black' />											
 					</TouchableOpacity>
 					
-					<TouchableOpacity
-					onPress={()=> setCurrentScreen('select')}
-					style={globalStyles.deleteVehicleBtn}
+					<TouchableOpacity style={globalStyles.deleteVehicleBtn}
+						onPress={()=> setCurrentScreen('select')}					
 					>
 						<Ionicons name='trash' size={28} color='white' />					
 					</TouchableOpacity>									
-				</View>
-							
+				</View>							
 			</View>
 		</View>
-	);
-	
+	);	
 }

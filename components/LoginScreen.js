@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, TouchableOpacity, Linking } from 'react-native';
 import { globalStyles } from './globalStyles';
+import { regexPatterns } from './regexPatterns';
 
 export default function LoginScreen({ setCurrentScreen }) {
 	

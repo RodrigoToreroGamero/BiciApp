@@ -112,14 +112,35 @@ export const globalStyles = StyleSheet.create({
 		borderRadius: '50%',
 		padding: 10,		
 	},
+	imgContainer: {
+		width: 200,
+		height: 200,
+		position: 'relative',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: 'grey',
+		borderRadius: 10,
+		overflow: 'hidden'
+	},
 	setImgBtn: {
 		backgroundColor: 'blue',
 		borderRadius: '50%',
 		padding: 10,
+		position: 'absolute',
+		top: 8,
+		right: 8
+	},
+	imgPlaceholder: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	image: {
-		width: 120,
-		height: 120,
-		backgroundColor: '#cccc'
+		//width: 120,
+		width: '100%',
+		//height: 120,
+		height: '100%',
+		//backgroundColor: '#cccc',
+		resizeMode: 'cover'
 	}
 });
