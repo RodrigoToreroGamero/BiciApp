@@ -15,6 +15,13 @@ export default function SelectScreen({ setCurrentScreen }) {
 			</View>
 			<View style={globalStyles.background}>
 			
+				<View>
+					<TouchableOpacity
+						onPress={()=> setCurrentScreen('login')}
+					>
+						<Ionicons name='log-out-outline' size={30} color='white' />
+					</TouchableOpacity>
+				</View>
 				<ImageContainer image={image} setImage={setImage} useSetBtn={false} />
 				
 				<View style={globalStyles.horizontalBtns}>

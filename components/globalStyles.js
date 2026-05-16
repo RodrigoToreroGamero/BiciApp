@@ -66,11 +66,13 @@ export const globalStyles = StyleSheet.create({
 		marginTop: 15,
 		textAlign: 'center'
 	},
+	/*
 	loginTxt: {
 		color: 'white',
 		textAlign: 'center',
 		margin: 5
 	},
+	*/
 	center: {
 		flex: 1,
 		justifyContent: 'center',

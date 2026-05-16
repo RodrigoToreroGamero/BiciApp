@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, Text, TouchableOpacity, Linking } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { regexPatterns } from './regexPatterns';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function LoginScreen({ setCurrentScreen }) {
 		
@@ -33,7 +34,7 @@ export default function LoginScreen({ setCurrentScreen }) {
 		} else {
 			setPasswordError('');
 			setPasswordIsValid(true);
-		}			
+		}
 	};
 	
 	useEffect(() => {
@@ -63,12 +64,12 @@ export default function LoginScreen({ setCurrentScreen }) {
 				{canLogin ?
 					<TouchableOpacity style={globalStyles.loginBtn}
 						onPress={()=> setCurrentScreen('select')}				
-					>
-						<Text style={globalStyles.loginTxt}>Ingresar</Text>
+					>						
+						<Ionicons name='log-in-outline' size={30} color='white' />
 					</TouchableOpacity>
 				:
-					<TouchableOpacity style={globalStyles.loginBtnDisabled}>
-						<Text style={globalStyles.loginTxt}>Ingresar</Text>
+					<TouchableOpacity style={globalStyles.loginBtnDisabled}>						
+						<Ionicons name='log-in' size={30} color='white' />
 					</TouchableOpacity>
 				}
 				
