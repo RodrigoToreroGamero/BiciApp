@@ -54,6 +54,14 @@ export const globalStyles = StyleSheet.create({
 		alignItems: 'center',
 		width: '100%',
 	},
+	loginBtnDisabled: {		
+		backgroundColor: 'grey',
+		borderRadius: 10,
+		marginTop: 10,
+		paddingVertical: 12,
+		alignItems: 'center',
+		width: '100%',
+	},
 	forgotPassword: {
 		marginTop: 15,
 		textAlign: 'center'
