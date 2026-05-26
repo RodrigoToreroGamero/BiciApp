@@ -152,5 +152,8 @@ export const globalStyles = StyleSheet.create({
 		height: '100%',
 		//backgroundColor: '#cccc',
 		resizeMode: 'cover'
+	},
+	card: {
+		
 	}
 });

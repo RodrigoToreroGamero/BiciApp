@@ -4,11 +4,29 @@ import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function ImageContainer({ image, setImage, useSetBtn} ) {
+	
+	function getImageSource() {
+		if(!image) {
+			return null;
+		}
 		
+		// Imagen remota
+		if(typeof image === 'string') {
+			return { uri: image };
+		}
+		
+		// Imagen local require(...)
+		return image;
+	}
+	
+	
 	return (
 		<View style={globalStyles.imgContainer}>
 			{image ? (
-				<Image source={{ uri: image }} style={globalStyles.image} />
+				<Image style={globalStyles.image}
+					source={getImageSource()}
+					resizeMode='cover' 
+				/>
 			) : (
 				<View style={globalStyles.imgPlaceholder}>
 					<Ionicons name='image' size={200} color='white' />
