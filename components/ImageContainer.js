@@ -6,17 +6,22 @@ import { Ionicons } from '@expo/vector-icons';
 export default function ImageContainer({ image, setImage, useSetBtn} ) {
 	
 	function getImageSource() {
-		if(!image) {
+		try {
+			if(!image) {
+				return null;
+			}
+			
+			// Imagen remota
+			if(typeof image === 'string') {
+				return { uri: image };
+			}
+			
+			// Imagen local require(...)
+			return image;	
+		} catch(e) {
+			// Si el require de SelectScreen falla, retorna null para usar al placeholder.
 			return null;
 		}
-		
-		// Imagen remota
-		if(typeof image === 'string') {
-			return { uri: image };
-		}
-		
-		// Imagen local require(...)
-		return image;
 	}
 	
 	

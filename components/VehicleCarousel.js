@@ -1,24 +1,24 @@
 import React, { useState, useRef } from 'react';
 import { View, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import VehicleCard from './VehicleCard';
 
 
 
-export default function VehicleCarousel({ vehicles }) {
+export default function VehicleCarousel({ vehicles, selectedIndex, onChangeIndex }) {
 	
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const currentVehicle = vehicles[currentIndex];
+	const currentVehicle = vehicles[selectedIndex];
 	
 	function nextVehicle() {
-		if(currentIndex < vehicles.length - 1) {
-			setCurrentIndex(currentIndex + 1);
+		if(selectedIndex < vehicles.length - 1) {
+			onChangeIndex(selectedIndex + 1);
 		}
 	}
 	
 	function previousVehicle() {
-		if(currentIndex > 0) {
-			setCurrentIndex(currentIndex - 1);
+		if(selectedIndex > 0) {
+			onChangeIndex(selectedIndex - 1);
 		}
 	}
 	
@@ -32,7 +32,7 @@ export default function VehicleCarousel({ vehicles }) {
 					onPress={()=> previousVehicle()}						
 					activeOpacity={0.7}
 					hitSlop={10}
-					disabled={currentIndex <= 0}
+					disabled={selectedIndex <= 0}
 				>
 					<Ionicons name='chevron-back' size={30} color='black' />
 				</TouchableOpacity>
@@ -41,12 +41,12 @@ export default function VehicleCarousel({ vehicles }) {
 					onPress={()=> nextVehicle()}						
 					activeOpacity={0.7}
 					hitSlop={10}
-					disabled={currentIndex >= vehicles.length -1}
+					disabled={selectedIndex >= vehicles.length -1}
 				>
 					<Ionicons name='chevron-forward' size={30} color='black' />
 				</TouchableOpacity>
+				
 			</View>
-	
-	);
-	
+		</View>	
+	);	
 }

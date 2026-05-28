@@ -13,7 +13,8 @@ export default function SelectScreen({ setCurrentScreen }) {
 		{ id: "3", image: null, barcode: "c", brand: "Oxford", color: "Negro" },
 	]);
 	
-	const [selectedVehicle, setSelectedVehicle] = useState(null);
+	const [selectedIndex, setSelectedIndex] = useState(0);
+	const selectedVehicle = vehicles[selectedIndex];
 				
 	return (
 		<View style={globalStyles.container}>
@@ -36,8 +37,8 @@ export default function SelectScreen({ setCurrentScreen }) {
 				<View style={globalStyles.carouselSelection}>
 					<VehicleCarousel
 						vehicles={vehicles}
-						selectedVehicle={selectedVehicle}
-						onSelectVehicle={setSelectedVehicle}
+						selectedIndex={selectedIndex}
+						onChangeIndex={setSelectedIndex}
 					/>
 				</View>
 				
