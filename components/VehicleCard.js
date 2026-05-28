@@ -4,11 +4,11 @@ import ImageContainer from './ImageContainer';
 export default function VehicleCard({ vehicle }) {
 	return (
 		<View style={globalStyles.card}>
-			<ImageContainer image={vehicle.imageSource} useSetBtn={false} />
+			<ImageContainer image={vehicle.image} useSetBtn={false} />
 			
-			<View>
+			<View style={globalStyles.cardInfo}>
 				<View>
-				<Text>Código de barras: {vehicle.id}</Text>				
+				<Text>Código de barras: {vehicle.barcode}</Text>				
 				<Text>Marca: {vehicle.brand}</Text>					
 				<Text>Color: {vehicle.color}</Text>					
 				<Text>Características: ...</Text>

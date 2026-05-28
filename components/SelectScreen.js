@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { View, Image, Text, TouchableOpacity, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import ImageContainer from './ImageContainer';
@@ -8,34 +8,42 @@ import VehicleCarousel from './VehicleCarousel';
 export default function SelectScreen({ setCurrentScreen }) {
 			
 	const [vehicles, setVehicles] = useState([
-		{ id: "1", imageSource: require("../assets/bicicle1.png"), brand: "Monark", color: "Rojo" },
-		{ id: "2", imageSource: require("../assets/bicicle2.png", brand: "Giant", color: "Azul" },
-		{ id: "3", imageSource: require("../assets/bicicle3.png", brand: "Oxford", color: "Negro" },
+		{ id: "1", image: null, barcode: "a", brand: "Monark", color: "Rojo" },
+		{ id: "2", image: "este es un url", barcode: "b", brand: "Giant", color: "Azul" },
+		{ id: "3", image: null, barcode: "c", brand: "Oxford", color: "Negro" },
 	]);
 	
 	const [selectedVehicle, setSelectedVehicle] = useState(null);
 				
 	return (
 		<View style={globalStyles.container}>
-			<View>
+		
+			{/* HEADER: */}
+			<View style={globalStyles.header}>
 				<Text style={globalStyles.titleText}>Tus Vehículos</Text>
+				
+				<TouchableOpacity
+					onPress={()=> setCurrentScreen('login')}
+				>
+					<Ionicons name='log-out-outline' size={30} color='white' />
+				</TouchableOpacity>
 			</View>
-			<View style={globalStyles.background}>
 			
-				<View>
-					<TouchableOpacity
-						onPress={()=> setCurrentScreen('login')}
-					>
-						<Ionicons name='log-out-outline' size={30} color='white' />
-					</TouchableOpacity>
+			{/* CONTENT: */}
+			<View style={globalStyles.content}>
+			
+				{/* CAROUSEL: */}
+				<View style={globalStyles.carouselSelection}>
+					<VehicleCarousel
+						vehicles={vehicles}
+						selectedVehicle={selectedVehicle}
+						onSelectVehicle={setSelectedVehicle}
+					/>
 				</View>
 				
-				<VehicleCarousel
-					vehicles={vehicles}
-					onSelectVehicle={setSelectedVehicle}
-				/>
+				{/* CRUD BUTTONS: */}
+				<View style={globalStyles.vehicleActionsBtns}>
 				
-				<View style={globalStyles.horizontalBtns}>
 					<TouchableOpacity style={globalStyles.deleteVehicleBtn}
 						onPress={()=> setCurrentScreen('delete')}
 						activeOpacity={0.7}
@@ -59,6 +67,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 					>
 						<Ionicons name='add-outline' size={28} color='white' />
 					</TouchableOpacity>
+					
 				</View>							
 			</View>
 		</View>

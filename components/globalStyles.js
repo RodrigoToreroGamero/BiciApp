@@ -1,51 +1,51 @@
 import { StyleSheet } from 'react-native';
 
-/*
-const colors = {
-	primary: 	'#2563eb',
-	danger: 	'#dc2626',
-	background: '#f9fafb',
-	text: 		'#111827',
-	gray:		'#6b7280',
-	white:		'#ffffff',
-	border:		'#d1d5db'
-};
-*/
-
 export const globalStyles = StyleSheet.create({
+	/* SCREEN LAYOUT: */
 	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'stretch',
+		flex: 1,		
 		paddingHorizontal: 24,
-		backgroundColor: 'rgb(150, 150, 150)'
-		//backgroundColor: colors.background
+		backgroundColor: 'rgb(150, 150, 150)'		
 	},
-	background: {
-		backgroundColor: 'rgb(255, 100, 100)',
-		justifyContent: 'center',
-		marginTop: 30,
-		width: '100%'
+	header: {
+		height: 80,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
 	},
-	titleText: {
+	content: {
 		flex: 1,
+		paddingBottom: 20
+	},
+	center: {		
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+
+	/* TEXT: */
+	titleText: {		
 		color: 'black',
-		//color: colors.text,
 		fontSize: 24,
-		fontWeight: '600',
-		marginBottom: 20,
+		fontWeight: '600',		
 		textAlign: 'center'
 	},
+	forgotPassword: {
+		marginTop: 15,
+		textAlign: 'center'
+	},
+	
+	/* INPUTS: */	
 	input: {
 		backgroundColor: 'white',
-		//backgroundColor: colors.white,
 		color: 'rgb(50,50,50)',
-		//color: colors.text,
 		width: '100%',
 		paddingVertical: 10,
+		paddingHorizontal: 12,
 		borderRadius: 10,
 		marginBottom: 15
 	},
+	
+	/* LOGIN BUTTONS: */	
 	loginBtn: {		
 		backgroundColor: 'blue',
 		borderRadius: 10,
@@ -62,38 +62,46 @@ export const globalStyles = StyleSheet.create({
 		alignItems: 'center',
 		width: '100%',
 	},
-	forgotPassword: {
-		marginTop: 15,
-		textAlign: 'center'
-	},
-	/*
-	loginTxt: {
-		color: 'white',
-		textAlign: 'center',
-		margin: 5
-	},
-	*/
-	center: {
+
+	/* CAROUSEL SELECTION: */
+	carouselSelection: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		justifyContent: 'center'		
+	},
+	cardContainer: {
+		alignItems: 'center',		
+		width: '100%',				
+		marginBottom: 20		
+	},
+	cardInfo: {
+		marginTop: 20,
+		width: '100%',
+		gap: 8
 	},
 	horizontalBtns: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'center'
-	},
+		alignItems: 'center',
+		width: '100%',		
+	},	
 	leftVehicleBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
-		padding: 10,
-		//borderWidth: 2		
+		padding: 10,	
 	},
 	rightVehicleBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		//borderWidth: 2
+	},
+	
+	/* CRUD BUTTONS: */
+	vehicleActionBtns: {
+		flexDirection: 'row',
+		justifyContent: 'space-evenly',		
+		alignItems: 'center',		
+		paddingVertical: 20
 	},
 	deleteVehicleBtn: {
 		backgroundColor: 'red',
@@ -104,7 +112,6 @@ export const globalStyles = StyleSheet.create({
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		//borderWidth: 2
 	},
 	registerVehicleBtn: {
 		backgroundColor: 'blue',
@@ -115,13 +122,17 @@ export const globalStyles = StyleSheet.create({
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		//borderWidth: 2
 	},
 	acceptBtn: {
 		backgroundColor: 'rgb(0,255,0)',
-		borderRadius: '50%',
-		padding: 10,		
+		borderRadius: 25,		
+		width: 50,
+		height: 50,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
+	
+	/* IMAGE: */
 	imgContainer: {
 		width: 200,
 		height: 200,
@@ -134,11 +145,14 @@ export const globalStyles = StyleSheet.create({
 	},
 	setImgBtn: {
 		backgroundColor: 'blue',
-		borderRadius: '50%',
-		padding: 10,
-		position: 'absolute',
+		borderRadius: 20,		
 		top: 8,
-		right: 8
+		right: 8,
+		width: 40,
+		height: 40,
+		position: 'absolute',
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	imgPlaceholder: {
 		flex: 1,
@@ -146,14 +160,17 @@ export const globalStyles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	image: {
-		//width: 120,
 		width: '100%',
-		//height: 120,
 		height: '100%',
-		//backgroundColor: '#cccc',
 		resizeMode: 'cover'
 	},
+	
+	/* VEHICLE CARD: */
 	card: {
-		
+		alignItems: 'center',
+		padding: 20,
+		width: '90%',		
+		backgroundColor: 'white',
+		borderRadius: 16		
 	}
 });
