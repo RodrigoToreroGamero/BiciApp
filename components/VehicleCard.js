@@ -8,9 +8,9 @@ export default function VehicleCard({ vehicle }) {
 			
 			<View>
 				<View>
-				<Text>Código de barras: {item.id}</Text>				
-				<Text>Marca: {item.brand}</Text>					
-				<Text>Color: {item.color}</Text>					
+				<Text>Código de barras: {vehicle.id}</Text>				
+				<Text>Marca: {vehicle.brand}</Text>					
+				<Text>Color: {vehicle.color}</Text>					
 				<Text>Características: ...</Text>
 			</View>
 		</View>
