@@ -99,9 +99,11 @@ export const globalStyles = StyleSheet.create({
 	/* CRUD BUTTONS: */
 	vehicleActionBtns: {
 		flexDirection: 'row',
-		justifyContent: 'space-evenly',		
+		justifyContent: 'space-between',		
 		alignItems: 'center',		
-		paddingVertical: 20
+		paddingVertical: 20,
+		marginHorizontal: 20,
+		marginTop: 'auto'
 	},
 	deleteVehicleBtn: {
 		backgroundColor: 'red',

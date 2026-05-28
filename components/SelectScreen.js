@@ -43,7 +43,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 				</View>
 				
 				{/* CRUD BUTTONS: */}
-				<View style={globalStyles.vehicleActionsBtns}>
+				<View style={globalStyles.vehicleActionBtns}>
 				
 					<TouchableOpacity style={globalStyles.deleteVehicleBtn}
 						onPress={()=> setCurrentScreen('delete')}
