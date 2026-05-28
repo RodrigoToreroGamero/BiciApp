@@ -8,34 +8,40 @@ import VehicleCarousel from './VehicleCarousel';
 export default function SelectScreen({ setCurrentScreen }) {
 			
 	const [vehicles, setVehicles] = useState([
-		{ id: "1", imageSource: require("../assets/bicicle1.png"), brand: "Monark", color: "Rojo" },
-		{ id: "2", imageSource: require("../assets/bicicle2.png", brand: "Giant", color: "Azul" },
-		{ id: "3", imageSource: require("../assets/bicicle3.png", brand: "Oxford", color: "Negro" },
+		{ id: "1", image: null, barcode: "a", brand: "Monark", color: "Rojo" },
+		{ id: "2", image: "este es un url", barcode: "b", brand: "Giant", color: "Azul" },
+		{ id: "3", image: null, barcode: "c", brand: "Oxford", color: "Negro" },
 	]);
 	
 	const [selectedVehicle, setSelectedVehicle] = useState(null);
 				
 	return (
 		<View style={globalStyles.container}>
-			<View>
-				<Text style={globalStyles.titleText}>Tus Vehículos</Text>
-			</View>
-			<View style={globalStyles.background}>
+		
+		
+		{/* HEADER */}
+			<View style={globalStyles.header}>
+				<TouchableOpacity
+					onPress={()=> setCurrentScreen('login')}
+				>
+					<Ionicons name='log-out-outline' size={30} color='white' />
+				</TouchableOpacity>					
+				<Text style={globalStyles.titleText}>Tus Vehículos</Text>			
+			</View>	
 			
-				<View>
-					<TouchableOpacity
-						onPress={()=> setCurrentScreen('login')}
-					>
-						<Ionicons name='log-out-outline' size={30} color='white' />
-					</TouchableOpacity>
+			{/* CONTENIDO */}			
+			<View style={globalStyles.content}>				
+			
+				{/* CARRUSEL */}
+				<View  style={globalStyles.carouselSelection}>
+					<VehicleCarousel
+						vehicles={vehicles}
+						onSelectVehicle={setSelectedVehicle}
+					/>
 				</View>
 				
-				<VehicleCarousel
-					vehicles={vehicles}
-					onSelectVehicle={setSelectedVehicle}
-				/>
-				
-				<View style={globalStyles.horizontalBtns}>
+				{/* BOTONES CRUD */}
+				<View style={ globalStyles.vehicleActionBtns }>
 					<TouchableOpacity style={globalStyles.deleteVehicleBtn}
 						onPress={()=> setCurrentScreen('delete')}
 						activeOpacity={0.7}

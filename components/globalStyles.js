@@ -1,46 +1,50 @@
 import { StyleSheet } from 'react-native';
 
-/*
-const colors = {
-	primary: 	'#2563eb',
-	danger: 	'#dc2626',
-	background: '#f9fafb',
-	text: 		'#111827',
-	gray:		'#6b7280',
-	white:		'#ffffff',
-	border:		'#d1d5db'
-};
-*/
-
 export const globalStyles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'stretch',
+		//justifyContent: 'center',
+		//alignItems: 'stretch',
 		paddingHorizontal: 24,
-		backgroundColor: 'rgb(150, 150, 150)'
-		//backgroundColor: colors.background
+		backgroundColor: 'rgb(150, 150, 150)'		
 	},
-	background: {
-		backgroundColor: 'rgb(255, 100, 100)',
-		justifyContent: 'center',
-		marginTop: 30,
-		width: '100%'
+	header: {
+		height: 80,
+		paddingHorizontal: 20,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
 	},
-	titleText: {
+	content: {
+		flex: 1
+	},
+	carouselSelection: {
 		flex: 1,
-		color: 'black',
-		//color: colors.text,
+		justifyContent: 'center',
+		alignItems: 'center',
+		//paddingBottom: 10,
+		overflow: 'hidden'
+	},		
+	/*
+	background: {
+		flex: 1,
+		backgroundColor: 'rgb(255, 100, 100)',
+		//justifyContent: 'center',
+		//marginTop: 30,		
+		width: '100%',
+		paddingTop: 20
+	},
+	*/
+	titleText: {		
+		color: 'black',		
 		fontSize: 24,
 		fontWeight: '600',
-		marginBottom: 20,
+		//marginBottom: 20,
 		textAlign: 'center'
 	},
 	input: {
-		backgroundColor: 'white',
-		//backgroundColor: colors.white,
-		color: 'rgb(50,50,50)',
-		//color: colors.text,
+		backgroundColor: 'white',		
+		color: 'rgb(50,50,50)',		
 		width: '100%',
 		paddingVertical: 10,
 		borderRadius: 10,
@@ -65,14 +69,7 @@ export const globalStyles = StyleSheet.create({
 	forgotPassword: {
 		marginTop: 15,
 		textAlign: 'center'
-	},
-	/*
-	loginTxt: {
-		color: 'white',
-		textAlign: 'center',
-		margin: 5
-	},
-	*/
+	},	
 	center: {
 		flex: 1,
 		justifyContent: 'center',
@@ -81,19 +78,40 @@ export const globalStyles = StyleSheet.create({
 	horizontalBtns: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'center'
+		alignItems: 'center',
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		width: '100%',
+		zIndex: 2,
+		paddingHorizontal: 10,
+		pointerEvents: 'box-none'
+	},
+	vehicleActionBtns: {
+		flexDirection: 'row',
+		justifyContent: 'space-evenly',
+		//marginTop: 20,
+		alignItems: 'center',
+		height: 90,
+		//paddingBottom: 10
 	},
 	leftVehicleBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		//borderWidth: 2		
+		position: 'absolute',
+		left: 10,
+		zIndex: 1
 	},
 	rightVehicleBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
-		//borderWidth: 2
+		position: 'absolute',
+		right: 10,
+		zIndex: 1		
 	},
 	deleteVehicleBtn: {
 		backgroundColor: 'red',
@@ -103,8 +121,7 @@ export const globalStyles = StyleSheet.create({
 	editVehicleBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
-		padding: 10,
-		//borderWidth: 2
+		padding: 10,		
 	},
 	registerVehicleBtn: {
 		backgroundColor: 'blue',
@@ -114,12 +131,11 @@ export const globalStyles = StyleSheet.create({
 	previousScreenBtn: {
 		backgroundColor: 'white',
 		borderRadius: 5,
-		padding: 10,
-		//borderWidth: 2
+		padding: 10,		
 	},
 	acceptBtn: {
 		backgroundColor: 'rgb(0,255,0)',
-		borderRadius: '50%',
+		borderRadius: 50,
 		padding: 10,		
 	},
 	imgContainer: {
@@ -134,7 +150,7 @@ export const globalStyles = StyleSheet.create({
 	},
 	setImgBtn: {
 		backgroundColor: 'blue',
-		borderRadius: '50%',
+		borderRadius: 50,
 		padding: 10,
 		position: 'absolute',
 		top: 8,
@@ -145,15 +161,19 @@ export const globalStyles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
-	image: {
-		//width: 120,
-		width: '100%',
-		//height: 120,
-		height: '100%',
-		//backgroundColor: '#cccc',
+	image: {		
+		width: '100%',		
+		height: '100%',		
 		resizeMode: 'cover'
 	},
 	card: {
-		
+		//flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: 20,
+		width: '90%',
+		height: '70%',
+		backgroundColor: 'white',
+		borderRadius: 16
 	}
 });

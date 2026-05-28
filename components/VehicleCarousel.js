@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, Dimensions, TouchableOpacity, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { globalStyles } from './globalStyles';
 import VehicleCard from './VehicleCard';
 
 const { width } = Dimensions.get('window');
@@ -29,7 +30,11 @@ export default function VehicleCarousel({ vehicles, onSelectVehicle }) {
 	}
 	
 	return (
-		<View>
+		<View style={{ 
+			width: '100%',
+			height: '100%',
+			justifyContent: 'center'		
+		}}>
 			<FlatList
 				ref={flatListRef}
 				data={vehicles}
@@ -38,7 +43,11 @@ export default function VehicleCarousel({ vehicles, onSelectVehicle }) {
 				showsHorizontalScrollIndicator={false}
 				keyExtractor={(item) => item.id}
 				renderItem={({ item }) => (
-					<View> style={{ width }}>
+					<View style={{ 					
+						width: width - 48,
+						justifyContent: 'center',
+						alignItems: 'center'
+					}}>
 						<VehicleCard vehicle={item} />
 					</View>				
 				)}				
@@ -49,7 +58,7 @@ export default function VehicleCarousel({ vehicles, onSelectVehicle }) {
 				}}
 			/>
 			
-			<View style={globalStyles.horizontalBtns}>
+			<View style={ globalStyles.horizontalBtns }>
 				<TouchableOpacity style={globalStyles.leftVehicleBtn}
 					onPress={()=> previousVehicle()}						
 					activeOpacity={0.7}
@@ -66,6 +75,7 @@ export default function VehicleCarousel({ vehicles, onSelectVehicle }) {
 					<Ionicons name='chevron-forward' size={30} color='black' />
 				</TouchableOpacity>
 			</View>
+		</View>
 	
 	);
 	

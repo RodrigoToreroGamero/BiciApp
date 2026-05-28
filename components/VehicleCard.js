@@ -1,16 +1,16 @@
 import { View, Text } from 'react-native';
 import ImageContainer from './ImageContainer';
+import { globalStyles } from './globalStyles';
 
 export default function VehicleCard({ vehicle }) {
 	return (
 		<View style={globalStyles.card}>
-			<ImageContainer image={vehicle.imageSource} useSetBtn={false} />
+			<ImageContainer image={vehicle.image} useSetBtn={false} />
 			
-			<View>
-				<View>
-				<Text>Código de barras: {item.id}</Text>				
-				<Text>Marca: {item.brand}</Text>					
-				<Text>Color: {item.color}</Text>					
+			<View>				
+				<Text>Código de barras: {vehicle.barcode}</Text>				
+				<Text>Marca: {vehicle.brand}</Text>			
+				<Text>Color: {vehicle.color}</Text>					
 				<Text>Características: ...</Text>
 			</View>
 		</View>
