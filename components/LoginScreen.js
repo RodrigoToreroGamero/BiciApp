@@ -4,6 +4,7 @@ import { globalStyles } from './globalStyles';
 import { regexPatterns } from './regexPatterns';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 export default function LoginScreen({ setCurrentScreen }) {
 		
@@ -42,14 +43,44 @@ export default function LoginScreen({ setCurrentScreen }) {
 		setCanLogin(usercodeIsValid && passwordIsValid);
 	}, [usercodeIsValid, passwordIsValid]);
 	
+	/*
 	const handleLogin = async () => {
 		try {
-			await AsyncStorage.setItem("userToken", usercode);
-			setCurrentScreen("select");
+			const res = await axios.post("http://localhost:3000/login", {
+				usercode,
+				password
+			});
+			if(res.data && res.data.token) {
+				await AsyncStorage.setItem("userToken", res.data.token);
+				setCurrentScreen("select");
+			} else {
+				alert("Credenciales inválidas");
+			}			
 		} catch(e) {
 			console.log("Error guardando el token: ", e);
 		}
 	};
+	*/
+	
+	const handleLogin = async () => {
+		try {		
+			const res = await axios.get(`http://localhost:3000/users`, {
+				params: {
+					usercode,
+					password
+				}
+			});
+			if(res.data.length > 0) {
+				await AsyncStorage.setItem("userToken", usercode);
+				setCurrentScreen("select");
+			} else {
+				alert("Credenciales inválidas");
+			}
+		} catch (e) {
+			console.log("Error en login: ", e);
+		}
+	};
+
 			
 	return (
 		<View style={globalStyles.container}>

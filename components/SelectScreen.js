@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import ImageContainer from './ImageContainer';
 import VehicleCarousel from './VehicleCarousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 export default function SelectScreen({ setCurrentScreen }) {
-			
+	/*	
 	const [vehicles, setVehicles] = useState([
 		{ id: "1", image: null, barcode: "a", brand: "Monark", color: "Rojo" },
 		{ id: "2", image: "este es un url", barcode: "b", brand: "Giant", color: "Azul" },
 		{ id: "3", image: null, barcode: "c", brand: "Oxford", color: "Negro" },
 	]);
+	*/
 	
+	const [vehicles, setVehicles] = useState([]);
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const selectedVehicle = vehicles[selectedIndex];
+	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;	
 	
 	const logout = async () => {
 		try {
@@ -25,6 +28,19 @@ export default function SelectScreen({ setCurrentScreen }) {
 			console.log("Error al cerrar sesión: ", e);
 		}		
 	};
+	
+	useEffect(() => {
+		const fetchVehicles = async () => {
+			try {
+				const userToken = await AsyncStorage.getItem("userToken");
+				const res = await axios.get(`http://localhost:3000/vehicles?usercode=${userToken}`);
+				setVehicles(res.data);
+			} catch(e) {
+				console.log("Error cargando vehículos: ", e);
+			}
+		}
+		fetchVehicles();
+	}, []);
 				
 	return (
 		<View style={globalStyles.container}>
@@ -45,11 +61,15 @@ export default function SelectScreen({ setCurrentScreen }) {
 			
 				{/* CAROUSEL: */}
 				<View style={globalStyles.carouselSelection}>
-					<VehicleCarousel
-						vehicles={vehicles}
-						selectedIndex={selectedIndex}
-						onChangeIndex={setSelectedIndex}
-					/>
+					{selectedVehicle ? (					
+						<VehicleCarousel
+							vehicles={vehicles}
+							selectedIndex={selectedIndex}
+							onChangeIndex={setSelectedIndex}
+						/>
+					) : (
+						<Text>No hay vehículos disponibles</Text>
+					)}
 				</View>
 				
 				{/* CRUD BUTTONS: */}
