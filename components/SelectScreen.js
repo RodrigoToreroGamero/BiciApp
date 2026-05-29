@@ -39,6 +39,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 				console.log("Error cargando vehículos: ", e);
 			}
 		}
+		console.log(AsyncStorage.getItem("userToken"));
 		fetchVehicles();
 	}, []);
 				

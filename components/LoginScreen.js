@@ -92,6 +92,7 @@ export default function LoginScreen({ setCurrentScreen }) {
 					placeholder='Código de usuario'
 					value={usercode}
 					onChangeText={validateUsercode}
+					keyboardType="default"
 				/>
 				{usercodeError ? <Text style={{color: 'red', fontWeight: 'bold'}}>{regexPatterns.usercode.errorMsg}</Text> : null}
 				
@@ -99,6 +100,7 @@ export default function LoginScreen({ setCurrentScreen }) {
 					placeholder='Contraseña'
 					value={password}
 					onChangeText={validatePassword}
+					keyboardType="password"
 				/>
 				{passwordError ? <Text style={{color: 'red', fontWeight: 'bold'}}>{regexPatterns.password.errorMsg}</Text> : null}
 				

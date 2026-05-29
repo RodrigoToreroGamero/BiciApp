@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import { View, Dimensions, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import VehicleCard from './VehicleCard';
@@ -27,8 +27,7 @@ export default function VehicleCarousel({ vehicles, selectedIndex, onChangeIndex
 				<TouchableOpacity style={globalStyles.leftVehicleBtn}
 					onPress={()=> previousVehicle()}						
 					activeOpacity={0.7}
-					hitSlop={10}
-					//disabled={selectedIndex <= 0}
+					hitSlop={10}					
 				>
 					<Ionicons name='chevron-back' size={30} color='black' />
 				</TouchableOpacity>
@@ -36,8 +35,7 @@ export default function VehicleCarousel({ vehicles, selectedIndex, onChangeIndex
 				<TouchableOpacity style={globalStyles.rightVehicleBtn}
 					onPress={()=> nextVehicle()}						
 					activeOpacity={0.7}
-					hitSlop={10}
-					//disabled={selectedIndex >= vehicles.length -1}
+					hitSlop={10}					
 				>
 					<Ionicons name='chevron-forward' size={30} color='black' />
 				</TouchableOpacity>

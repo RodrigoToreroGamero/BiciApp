@@ -9,9 +9,9 @@ export default function VehicleCard({ vehicle }) {
 			
 			<View style={globalStyles.cardInfo}>				
 				<Text>Código de barras: {vehicle.barcode}</Text>				
+				<Text>Tipo: {vehicle.type}</Text>
 				<Text>Marca: {vehicle.brand}</Text>					
-				<Text>Color: {vehicle.color}</Text>					
-				<Text>Características: ...</Text>
+				<Text>Color: {vehicle.color}</Text>				
 			</View>
 		</View>
 	);
