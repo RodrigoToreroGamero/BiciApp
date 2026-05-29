@@ -3,6 +3,7 @@ import { View, TextInput, Text, TouchableOpacity, Linking } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { regexPatterns } from './regexPatterns';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginScreen({ setCurrentScreen }) {
 		
@@ -40,6 +41,15 @@ export default function LoginScreen({ setCurrentScreen }) {
 	useEffect(() => {
 		setCanLogin(usercodeIsValid && passwordIsValid);
 	}, [usercodeIsValid, passwordIsValid]);
+	
+	const handleLogin = async () => {
+		try {
+			await AsyncStorage.setItem("userToken", usercode);
+			setCurrentScreen("select");
+		} catch(e) {
+			console.log("Error guardando el token: ", e);
+		}
+	};
 			
 	return (
 		<View style={globalStyles.container}>
@@ -63,7 +73,7 @@ export default function LoginScreen({ setCurrentScreen }) {
 				
 				{canLogin ?
 					<TouchableOpacity style={globalStyles.loginBtn}
-						onPress={()=> setCurrentScreen('select')}				
+						onPress={ handleLogin }				
 					>						
 						<Ionicons name='log-in-outline' size={30} color='white' />
 					</TouchableOpacity>

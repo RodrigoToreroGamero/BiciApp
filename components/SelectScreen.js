@@ -4,6 +4,7 @@ import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import ImageContainer from './ImageContainer';
 import VehicleCarousel from './VehicleCarousel';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SelectScreen({ setCurrentScreen }) {
 			
@@ -15,6 +16,15 @@ export default function SelectScreen({ setCurrentScreen }) {
 	
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const selectedVehicle = vehicles[selectedIndex];
+	
+	const logout = async () => {
+		try {
+			await AsyncStorage.removeItem("userToken");
+			setCurrentScreen("login");
+		} catch(e) {
+			console.log("Error al cerrar sesión: ", e);
+		}		
+	};
 				
 	return (
 		<View style={globalStyles.container}>
@@ -24,7 +34,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 				<Text style={globalStyles.titleText}>Tus Vehículos</Text>
 				
 				<TouchableOpacity
-					onPress={()=> setCurrentScreen('login')}
+					onPress={ logout }
 				>
 					<Ionicons name='log-out-outline' size={30} color='white' />
 				</TouchableOpacity>
