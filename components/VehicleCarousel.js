@@ -6,7 +6,7 @@ import VehicleCard from './VehicleCard';
 
 
 
-export default function VehicleCarousel({ vehicles, selectedIndex, onChangeIndex }) {
+export default function VehicleCarousel({ vehicles, selectedIndex, onChangeIndex, setCurrentScreen }) {
 	
 	const currentVehicle = vehicles[selectedIndex];
 	
@@ -21,7 +21,10 @@ export default function VehicleCarousel({ vehicles, selectedIndex, onChangeIndex
 	return (
 		<View style={{ alignItems: "center" }}>
 			
-			<VehicleCard vehicle={currentVehicle} />
+			<VehicleCard 
+				vehicle={currentVehicle}
+				setCurrentScreen={setCurrentScreen} 
+			/>
 			
 			<View style={globalStyles.horizontalBtns}>
 				<TouchableOpacity style={globalStyles.leftVehicleBtn}

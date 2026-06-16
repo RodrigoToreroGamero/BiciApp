@@ -8,14 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 export default function SelectScreen({ setCurrentScreen }) {
-	/*	
-	const [vehicles, setVehicles] = useState([
-		{ id: "1", image: null, barcode: "a", brand: "Monark", color: "Rojo" },
-		{ id: "2", image: "este es un url", barcode: "b", brand: "Giant", color: "Azul" },
-		{ id: "3", image: null, barcode: "c", brand: "Oxford", color: "Negro" },
-	]);
-	*/
-	
+		
 	const [vehicles, setVehicles] = useState([]);
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;	
@@ -66,6 +59,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 							vehicles={vehicles}
 							selectedIndex={selectedIndex}
 							onChangeIndex={setSelectedIndex}
+							setCurrentScreen={setCurrentScreen}
 						/>
 					) : (
 						<Text>No hay vehículos disponibles</Text>
@@ -74,7 +68,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 				
 				{/* CRUD BUTTONS: */}
 				<View style={globalStyles.vehicleActionBtns}>
-				
+					{/*
 					<TouchableOpacity style={globalStyles.deleteVehicleBtn}
 						onPress={()=> setCurrentScreen('delete')}
 						activeOpacity={0.7}
@@ -90,12 +84,13 @@ export default function SelectScreen({ setCurrentScreen }) {
 					>
 						<Ionicons name='pencil' size={28} color='black' />					
 					</TouchableOpacity>
-					
+					*/}
 					<TouchableOpacity style={globalStyles.registerVehicleBtn}
 						onPress={()=> setCurrentScreen('register')}					
 						activeOpacity={0.7}
 						hitSlop={10}
 					>
+						<Text>Registrar Vehículo </Text>
 						<Ionicons name='add-outline' size={28} color='white' />
 					</TouchableOpacity>
 					
