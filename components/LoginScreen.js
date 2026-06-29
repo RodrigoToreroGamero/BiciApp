@@ -5,6 +5,7 @@ import { regexPatterns } from './regexPatterns';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import LoadingScreen from './LoadingScreen';
 
 export default function LoginScreen({ setCurrentScreen }) {
 		
@@ -15,6 +16,8 @@ export default function LoginScreen({ setCurrentScreen }) {
 	const [passwordError, setPasswordError] = useState('');
 	const [passwordIsValid, setPasswordIsValid] = useState(false);
 	const [canLogin, setCanLogin] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [showPasswordText, setShowPasswordText] = useState(false);
 	
 	
 	const validateUsercode = (text) => {
@@ -63,7 +66,8 @@ export default function LoginScreen({ setCurrentScreen }) {
 	*/
 	
 	const handleLogin = async () => {
-		try {		
+		try {
+			setLoading(true);
 			const res = await axios.get(`http://localhost:3000/users`, {
 				params: {
 					usercode,
@@ -78,12 +82,15 @@ export default function LoginScreen({ setCurrentScreen }) {
 			}
 		} catch (e) {
 			console.log("Error en login: ", e);
+		} finally {
+			setLoading(false);
 		}
 	};
 
 			
 	return (
 		<View style={globalStyles.container}>
+			{/* LOGIN FORM */}
 			<View>
 				<Text style={globalStyles.titleText}>Iniciar Sesión</Text>
 			</View>
@@ -95,11 +102,24 @@ export default function LoginScreen({ setCurrentScreen }) {
 				/>
 				{usercodeError ? <Text style={{color: 'red', fontWeight: 'bold'}}>{regexPatterns.usercode.errorMsg}</Text> : null}
 				
-				<TextInput style={globalStyles.input}
-					placeholder='Contraseña'
-					value={password}
-					onChangeText={validatePassword}
-				/>
+				<View style={globalStyles.passwordSection}>
+					<TextInput style={globalStyles.input}
+						placeholder='Contraseña'
+						value={password}
+						onChangeText={validatePassword}
+						secureTextEntry={!showPasswordText}
+					/>
+					<TouchableOpacity
+						onPress={() => setShowPasswordText(!showPasswordText)}
+					>
+						{showPasswordText ?
+							<Ionicons name='eye-off' size={30} color='black' />						
+						:
+							<Ionicons name='eye-outline' size={30} color='black' />
+						}
+					</TouchableOpacity>
+				</View>
+				
 				{passwordError ? <Text style={{color: 'red', fontWeight: 'bold'}}>{regexPatterns.password.errorMsg}</Text> : null}
 				
 				{canLogin ?
@@ -121,6 +141,8 @@ export default function LoginScreen({ setCurrentScreen }) {
 					Restablecer Contraseña
 				</Text>
 			</View>
+			{/* LOADING SCREEN */}
+			{loading && <LoadingScreen visible={loading} />}
 		</View>
 	);	
 }

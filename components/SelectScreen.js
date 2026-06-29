@@ -6,30 +6,38 @@ import ImageContainer from './ImageContainer';
 import VehicleCarousel from './VehicleCarousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import LoadingScreen from './LoadingScreen';
 
 export default function SelectScreen({ setCurrentScreen }) {
 		
 	const [vehicles, setVehicles] = useState([]);
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;	
+	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;
+	const [loading, setLoading] = useState(false);
 	
 	const logout = async () => {
 		try {
+			setLoading(true);
 			await AsyncStorage.removeItem("userToken");
 			setCurrentScreen("login");
 		} catch(e) {
 			console.log("Error al cerrar sesión: ", e);
-		}		
+		} finally {
+			setLoading(false);
+		}
 	};
 	
 	useEffect(() => {
 		const fetchVehicles = async () => {
 			try {
+				setLoading(true);
 				const userToken = await AsyncStorage.getItem("userToken");
 				const res = await axios.get(`http://localhost:3000/vehicles?usercode=${userToken}`);
 				setVehicles(res.data);
 			} catch(e) {
 				console.log("Error cargando vehículos: ", e);
+			} finally {
+				setLoading(false);
 			}
 		}
 		fetchVehicles();
@@ -37,7 +45,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 				
 	return (
 		<View style={globalStyles.container}>
-		
+			{/* SELECT FORM */}
 			{/* HEADER: */}
 			<View style={globalStyles.header}>
 				<Text style={globalStyles.titleText}>Tus Vehículos</Text>
@@ -96,6 +104,9 @@ export default function SelectScreen({ setCurrentScreen }) {
 					
 				</View>							
 			</View>
+			
+			{/* LOADING SCREEN */}
+			{loading && <LoadingScreen visible={loading} />}
 		</View>
 	);	
 }

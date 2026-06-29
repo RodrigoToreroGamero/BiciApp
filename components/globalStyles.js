@@ -174,5 +174,12 @@ export const globalStyles = StyleSheet.create({
 		width: '90%',		
 		backgroundColor: 'white',
 		borderRadius: 16		
+	},
+	
+	/* PASSWORD INPUT & EYE */
+	passwordSection: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',		
+		alignItems: 'center',		
 	}
 });
