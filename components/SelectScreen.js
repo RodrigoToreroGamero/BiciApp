@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
-import ImageContainer from './ImageContainer';
 import VehicleCarousel from './VehicleCarousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';

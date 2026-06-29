@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Animated, View, Text, ActivityIndicator } from 'react-native';
+import { Animated, Text, ActivityIndicator } from 'react-native';
 
 export default function LoadingScreen({ visible }) {
 	const fadeAnimation = useRef(new Animated.Value(0)).current;

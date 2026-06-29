@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { View, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import VehicleCard from './VehicleCard';

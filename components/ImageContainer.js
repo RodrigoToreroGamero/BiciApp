@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Image, TouchableOpacity } from 'react-native';
 import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -20,6 +20,7 @@ export default function ImageContainer({ image, setImage, useSetBtn} ) {
 			return image;	
 		} catch(e) {
 			// Si el require de SelectScreen falla, retorna null para usar al placeholder.
+			console.log(e.getMessage());
 			return null;
 		}
 	}

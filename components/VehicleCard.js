@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import ImageContainer from './ImageContainer';
 import { globalStyles } from './globalStyles';
 import { useState } from 'react';

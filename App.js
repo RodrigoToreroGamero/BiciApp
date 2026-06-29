@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import LoginScreen from './components/LoginScreen';
 import SelectScreen from './components/SelectScreen';
