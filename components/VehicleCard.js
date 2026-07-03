@@ -3,6 +3,7 @@ import ImageContainer from './ImageContainer';
 import { globalStyles } from './globalStyles';
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { Barcode } from 'expo-barcode-generator';
 
 export default function VehicleCard({ vehicle, setCurrentScreen }) {	
 	
@@ -17,10 +18,18 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 		<View style={globalStyles.card}>
 			<ImageContainer image={vehicle.image} useSetBtn={false} />
 			
-			<View style={globalStyles.cardInfo}>				
-				<Text>Código de barras: {vehicle.barcode}</Text>
-				<Text>Tipo: {vehicle.type}</Text>					
-				<Text>Marca: {vehicle.brand}</Text>					
+			<View style={globalStyles.cardInfo}>
+				<Barcode
+					value={vehicle.barcode}
+					options={{
+						format: "CODE128",
+						width: 1.2,
+						height: 40,
+						displayValue: false
+					}}
+				/>
+				<Text>{vehicle.type}</Text>					
+				<Text>{vehicle.brand}</Text>					
 				<Text>Color: {vehicle.color}</Text>				
 			</View>
 			

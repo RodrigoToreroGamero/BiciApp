@@ -13,6 +13,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;
 	const [loading, setLoading] = useState(false);
+	const API_URL = "http://localhost:3000";
 	
 	const logout = async () => {
 		try {
@@ -31,7 +32,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 			try {
 				setLoading(true);
 				const userToken = await AsyncStorage.getItem("userToken");
-				const res = await axios.get(`http://localhost:3000/vehicles?usercode=${userToken}`);
+				const res = await axios.get(`${API_URL}/vehicles?usercode=${userToken}`);
 				setVehicles(res.data);
 			} catch(e) {
 				console.log("Error cargando vehículos: ", e);
@@ -74,24 +75,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 				</View>
 				
 				{/* CRUD BUTTONS: */}
-				<View style={globalStyles.vehicleActionBtns}>
-					{/*
-					<TouchableOpacity style={globalStyles.deleteVehicleBtn}
-						onPress={()=> setCurrentScreen('delete')}
-						activeOpacity={0.7}
-						hitSlop={10}					
-					>
-						<Ionicons name='trash' size={28} color='white' />
-					</TouchableOpacity>
-					
-					<TouchableOpacity style={globalStyles.editVehicleBtn}
-						onPress={()=> setCurrentScreen('edit')}
-						activeOpacity={0.7}
-						hitSlop={10}					
-					>
-						<Ionicons name='pencil' size={28} color='black' />					
-					</TouchableOpacity>
-					*/}
+				<View style={globalStyles.vehicleActionBtns}>				
 					<TouchableOpacity style={globalStyles.registerVehicleBtn}
 						onPress={()=> setCurrentScreen('register')}					
 						activeOpacity={0.7}

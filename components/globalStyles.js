@@ -11,7 +11,7 @@ export const globalStyles = StyleSheet.create({
 		height: 80,
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between'
+		justifyContent: 'space-around'
 	},
 	content: {
 		flex: 1,
@@ -75,9 +75,13 @@ export const globalStyles = StyleSheet.create({
 		marginBottom: 20		
 	},
 	cardInfo: {
+		backgroundColor: 'white',
 		marginTop: 20,
+		padding: 10,
 		width: '100%',
-		gap: 8
+		gap: 8,
+		borderRadius: 10,
+		alignItems: 'center'
 	},
 	horizontalBtns: {
 		flexDirection: 'row',
@@ -99,7 +103,7 @@ export const globalStyles = StyleSheet.create({
 	/* CRUD BUTTONS: */
 	vehicleActionBtns: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',		
+		justifyContent: 'center',		
 		alignItems: 'center',		
 		paddingVertical: 20,
 		marginHorizontal: 20,
@@ -119,7 +123,8 @@ export const globalStyles = StyleSheet.create({
 	},
 	registerVehicleBtn: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',		
+		justifyContent: 'space-between',
+		alignItems: 'center',		
 		backgroundColor: 'blue',
 		borderRadius: 5,
 		padding: 10
