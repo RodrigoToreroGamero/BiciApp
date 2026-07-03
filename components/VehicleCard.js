@@ -30,7 +30,7 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 				/>
 				<Text>{vehicle.type}</Text>					
 				<Text>{vehicle.brand}</Text>					
-				<Text>Color: {vehicle.color}</Text>				
+				<Text>Color: {vehicle.color.value}</Text>				
 			</View>
 			
 			{/* Botón hamburguesa */}

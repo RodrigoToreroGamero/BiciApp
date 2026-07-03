@@ -17,6 +17,7 @@
     "eslint-config-expo": "~10.0.0",
     "expo": "~54.0.33",
     "expo-barcode-generator": "^4.0.0",
+    "expo-crypto": "~15.0.9",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
