@@ -5,7 +5,7 @@ export const globalStyles = StyleSheet.create({
 	container: {
 		flex: 1,		
 		paddingHorizontal: 24,
-		backgroundColor: 'rgb(150, 150, 150)'		
+		backgroundColor: 'rgb(100, 255, 0)'		
 	},
 	header: {
 		height: 80,
@@ -69,7 +69,7 @@ export const globalStyles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'		
 	},
-	cardContainer: {
+	cardContainer: {		
 		alignItems: 'center',		
 		width: '100%',				
 		marginBottom: 20		
@@ -105,17 +105,21 @@ export const globalStyles = StyleSheet.create({
 		marginHorizontal: 20,
 		marginTop: 'auto'
 	},
-	deleteVehicleBtn: {
+	deleteVehicleBtn: {			
 		backgroundColor: 'red',
 		borderRadius: 5,
-		padding: 10
+		padding: 10,
+		marginRight: 10
 	},
-	editVehicleBtn: {
+	editVehicleBtn: {		
 		backgroundColor: 'white',
 		borderRadius: 5,
 		padding: 10,
+		marginLeft: 10
 	},
 	registerVehicleBtn: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',		
 		backgroundColor: 'blue',
 		borderRadius: 5,
 		padding: 10
@@ -168,12 +172,22 @@ export const globalStyles = StyleSheet.create({
 	},
 	
 	/* VEHICLE CARD: */
-	card: {
+	card: {		
 		alignItems: 'center',
 		padding: 20,
 		width: '90%',		
-		backgroundColor: 'white',
+		backgroundColor: 'rgb(200,255,100)',
 		borderRadius: 16		
+	},
+	cardButtons: {
+		flexDirection: 'row',	
+		justifyContent: 'space-between'		
+	},
+	hamburgerBtn: {
+		padding: 10,
+		margin: 10,
+		borderWidth: 2,
+		borderRadius: 10
 	},
 	
 	/* PASSWORD INPUT & EYE */

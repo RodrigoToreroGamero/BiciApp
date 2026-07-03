@@ -97,7 +97,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 						activeOpacity={0.7}
 						hitSlop={10}
 					>
-						<Text>Registrar Vehículo </Text>
+						<Text style={{ color: 'white' }}>Registrar Vehículo </Text>
 						<Ionicons name='add-outline' size={28} color='white' />
 					</TouchableOpacity>
 					

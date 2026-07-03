@@ -18,14 +18,14 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 			<ImageContainer image={vehicle.image} useSetBtn={false} />
 			
 			<View style={globalStyles.cardInfo}>				
-				<Text>Código de barras: {vehicle.barcode}</Text>				
+				<Text>Código de barras: {vehicle.barcode}</Text>
+				<Text>Tipo: {vehicle.type}</Text>					
 				<Text>Marca: {vehicle.brand}</Text>					
-				<Text>Color: {vehicle.color}</Text>					
-				<Text>Características: ...</Text>
+				<Text>Color: {vehicle.color}</Text>				
 			</View>
 			
 			{/* Botón hamburguesa */}
-			<TouchableOpacity
+			<TouchableOpacity style={globalStyles.hamburgerBtn}
 				onPress={() => setMenuOpen(!menuOpen)}
 			>
 				<Ionicons name='menu-outline' size={28} color='black' />
@@ -33,13 +33,12 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 			
 			{/* Menú de opciones */}
 				{menuOpen && (
-					<View>
+					<View style={globalStyles.cardButtons}>
 						<TouchableOpacity style={globalStyles.deleteVehicleBtn}
 							onPress={()=> handleMenuOption('delete')}
 							activeOpacity={0.7}
 							hitSlop={10}					
-						>
-							<Text>Eliminar vehículo </Text>
+						>							
 							<Ionicons name='trash' size={28} color='white' />
 						</TouchableOpacity>
 						
@@ -47,8 +46,7 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 							onPress={()=> handleMenuOption('edit')}							
 							activeOpacity={0.7}
 							hitSlop={10}					
-						>
-							<Text>Editar vehículo </Text>
+						>							
 							<Ionicons name='pencil' size={28} color='black' />					
 						</TouchableOpacity>					
 					</View>				
