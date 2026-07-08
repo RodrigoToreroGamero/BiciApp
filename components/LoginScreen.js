@@ -19,6 +19,8 @@ export default function LoginScreen({ setCurrentScreen }) {
 	const [loading, setLoading] = useState(false);
 	const [showPasswordText, setShowPasswordText] = useState(false);
 	
+	const API_URL = "http://localhost:3000";
+	
 	
 	const validateUsercode = (text) => {
 		setUsercode(text);
@@ -46,29 +48,11 @@ export default function LoginScreen({ setCurrentScreen }) {
 		setCanLogin(usercodeIsValid && passwordIsValid);
 	}, [usercodeIsValid, passwordIsValid]);
 	
-	/*
-	const handleLogin = async () => {
-		try {
-			const res = await axios.post("http://localhost:3000/login", {
-				usercode,
-				password
-			});
-			if(res.data && res.data.token) {
-				await AsyncStorage.setItem("userToken", res.data.token);
-				setCurrentScreen("select");
-			} else {
-				alert("Credenciales inválidas");
-			}			
-		} catch(e) {
-			console.log("Error guardando el token: ", e);
-		}
-	};
-	*/
-	
+		
 	const handleLogin = async () => {
 		try {
 			setLoading(true);
-			const res = await axios.get(`http://localhost:3000/users`, {
+			const res = await axios.get(`${API_URL}/users`, {
 				params: {
 					usercode,
 					password

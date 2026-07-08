@@ -11,10 +11,10 @@ export default function LoadingScreen({ visible }) {
 				duration: 300,
 				useNativeDriver: true,
 		}).start();		
-	}, [visible]);
+	}, [visible, fadeAnimation]);
 	
 	return (
-		<Animated.View>
+		<Animated.View style={{ opacity: fadeAnimation }}>
 			<ActivityIndicator size="large" color="#fff" />
 			<Text>Cargando...</Text>
 		</Animated.View>

@@ -23,14 +23,14 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 					value={vehicle.barcode}
 					options={{
 						format: "CODE128",
-						width: 1.2,
+						width: 1,
 						height: 40,
 						displayValue: false
 					}}
 				/>
 				<Text>{vehicle.type}</Text>					
 				<Text>{vehicle.brand}</Text>					
-				<Text>Color: {vehicle.color.value}</Text>				
+				<Text>Color: {vehicle.color}</Text>				
 			</View>
 			
 			{/* Botón hamburguesa */}
