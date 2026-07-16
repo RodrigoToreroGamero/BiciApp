@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { globalStyles } from './globalStyles';
 
 export default function SelectorModal({ enable, options, onSelect, selected, label, disableLabel }) {
 	const [visible, setVisible] = useState(false);
 	
 	return (
-		<View style={{ marginVertical: 8 }}>
+		<View style={globalStyles.modalContainer}>
 			{enable ? 
 				<View>		
 					{/* Open Modal Button */}
@@ -23,8 +24,8 @@ export default function SelectorModal({ enable, options, onSelect, selected, lab
 							animationType="slide"
 							transparent={true}
 						>
-						<View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "rgba(0,0,0,0.5)" }}>
-							<View style={{ width: "80%", maxHeight: "70%", backgroundColor: "white", borderRadius: 8}}>
+						<View style={globalStyles.modalBackground}>
+							<View style={globalStyles.modalContent}>
 							
 								{/* Return Button */}
 								<TouchableOpacity style={{ padding: 15, borderBottomWidth: 1, borderColor: "#ccc", backgroundColor: "#f5f5f5" }}

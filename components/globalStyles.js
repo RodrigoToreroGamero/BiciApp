@@ -5,7 +5,11 @@ export const globalStyles = StyleSheet.create({
 	container: {
 		flex: 1,		
 		paddingHorizontal: 24,
-		backgroundColor: 'rgb(100, 255, 0)'		
+		backgroundColor: 'rgb(100, 255, 0)',
+
+		width: "100%",
+		maxWidth: 420,
+		alignSelf: "center"
 	},
 	header: {
 		height: 80,
@@ -194,11 +198,42 @@ export const globalStyles = StyleSheet.create({
 		borderWidth: 2,
 		borderRadius: 10
 	},
+	barcodContainer: {
+		width: "100%",
+		alignItems: "center",
+		overflow: "hidden"
+	},
 	
 	/* PASSWORD INPUT & EYE */
 	passwordSection: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',		
 		alignItems: 'center',		
+	},
+	
+	/* FORMS */
+	formContainer: {
+		width: "100%",
+		maxWidth: 380,
+		alignSelf: "center"
+	},
+	modalContainer: {
+		width: "90%",
+		maxWidth: 360,
+		alignSelf: "center",
+		marginVertical: 8
+	},
+	modalBackground: {
+		flex: 1,
+		justifyContent: "center", 
+		alignItems: "center", 
+		backgroundColor: "rgba(0,0,0,0.5)"
+	},
+	modalContent: {
+		width: "90",
+		maxWidth: 360,
+		maxHeight: "70%",
+		backgroundColor: "white",
+		borderRadius: 8
 	}
 });

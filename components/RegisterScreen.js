@@ -69,38 +69,38 @@ export default function RegisterScreen({ setCurrentScreen }) {
 			<View style={globalStyles.background}>
 				
 				<ImageContainer image={image} setImage={setImage} useSetBtn={true} />
-												
-				<SelectorModal
-					enable={true}
-					options={vehicleTypes.map(v => ({ name: v.type, value: v.type }))}
-					selected={selectedType}
-					onSelect={(item) => {
-						setSelectedType(item.value);
-						setSelectedBrand(null);
-					}}
-					label="Tipo de vehículo"
-					disableLabel=""
-				/>
-								
-				<SelectorModal
-					enable={selectedType}
-					options={brands.map(b => ({ name: b, value: b }))}
-					selected={selectedBrand}
-					onSelect={(item) => setSelectedBrand(item.value)}				
-					label="Marca"
-					disableLabel="Marca"
-				/>
-								
-				<SelectorModal
-					enable={true}
-					options={colors.map(c => ({ name: c.name, value: c.value }))}
-					selected={selectedColor}
-					onSelect={(item) => setSelectedColor(item.name)}
-					label="Color"
-					disableLabel=""
-				/>
 				
-				
+				<View style={globalStyles.formContainer}>
+					<SelectorModal
+						enable={true}
+						options={vehicleTypes.map(v => ({ name: v.type, value: v.type }))}
+						selected={selectedType}
+						onSelect={(item) => {
+							setSelectedType(item.value);
+							setSelectedBrand(null);
+						}}
+						label="Tipo de vehículo"
+						disableLabel=""
+					/>
+									
+					<SelectorModal
+						enable={selectedType}
+						options={brands.map(b => ({ name: b, value: b }))}
+						selected={selectedBrand}
+						onSelect={(item) => setSelectedBrand(item.value)}				
+						label="Marca"
+						disableLabel="Marca"
+					/>
+									
+					<SelectorModal
+						enable={true}
+						options={colors.map(c => ({ name: c.name, value: c.value }))}
+						selected={selectedColor}
+						onSelect={(item) => setSelectedColor(item.name)}
+						label="Color"
+						disableLabel=""
+					/>
+				</View>				
 				<View style={globalStyles.horizontalBtns}>										
 					<TouchableOpacity style={globalStyles.editVehicleBtn} onPress={()=> setCurrentScreen('select')}>		
 						<Ionicons name='return-down-back' size={28} color='black' />						

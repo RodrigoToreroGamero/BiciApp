@@ -19,15 +19,19 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 			<ImageContainer image={vehicle.image} useSetBtn={false} />
 			
 			<View style={globalStyles.cardInfo}>
-				<Barcode
-					value={vehicle.barcode}
-					options={{
-						format: "CODE128",
-						width: 1,
-						height: 40,
-						displayValue: false
-					}}
-				/>
+				{vehicle?.barcode ? (
+					<View style={globalStyles.barcodContainer}>
+						<Barcode
+							value={String(vehicle?.barcode ?? "")}
+							options={{
+								format: "CODE128",
+								width: 0.7,
+								height: 40,
+								displayValue: false
+							}}
+						/>
+					</View>
+				) : null}
 				<Text>{vehicle.type}</Text>					
 				<Text>{vehicle.brand}</Text>					
 				<Text>Color: {vehicle.color}</Text>				

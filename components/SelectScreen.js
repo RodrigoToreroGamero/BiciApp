@@ -4,8 +4,9 @@ import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import VehicleCarousel from './VehicleCarousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
+//import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
+import { api } from './api';
 
 export default function SelectScreen({ setCurrentScreen }) {
 		
@@ -13,7 +14,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;
 	const [loading, setLoading] = useState(false);
-	const API_URL = "http://localhost:3000";
+	//const API_URL = "http://localhost:3000";
 	
 	const logout = async () => {
 		try {
@@ -32,7 +33,9 @@ export default function SelectScreen({ setCurrentScreen }) {
 			try {
 				setLoading(true);
 				const userToken = await AsyncStorage.getItem("userToken");
-				const res = await axios.get(`${API_URL}/vehicles?usercode=${userToken}`);
+				//const res = await axios.get(`${API_URL}/vehicles?usercode=${userToken}`);
+				const res = await api.get(`/vehicles?usercode=${userToken}`);
+				console.log(res.data);
 				setVehicles(res.data);
 			} catch(e) {
 				console.log("Error cargando vehículos: ", e);
@@ -60,36 +63,40 @@ export default function SelectScreen({ setCurrentScreen }) {
 			{/* CONTENT: */}
 			<View style={globalStyles.content}>
 			
-				{/* CAROUSEL: */}
-				<View style={globalStyles.carouselSelection}>
-					{selectedVehicle ? (					
-						<VehicleCarousel
-							vehicles={vehicles}
-							selectedIndex={selectedIndex}
-							onChangeIndex={setSelectedIndex}
-							setCurrentScreen={setCurrentScreen}
-						/>
-					) : (
-						<Text>No hay vehículos disponibles</Text>
-					)}
-				</View>
 				
-				{/* CRUD BUTTONS: */}
-				<View style={globalStyles.vehicleActionBtns}>				
-					<TouchableOpacity style={globalStyles.registerVehicleBtn}
-						onPress={()=> setCurrentScreen('register')}					
-						activeOpacity={0.7}
-						hitSlop={10}
-					>
-						<Text style={{ color: 'white' }}>Registrar Vehículo </Text>
-						<Ionicons name='add-outline' size={28} color='white' />
-					</TouchableOpacity>
-					
-				</View>							
-			</View>
-			
-			{/* LOADING SCREEN */}
-			{loading && <LoadingScreen visible={loading} />}
+				{/* LOADING SCREEN */}
+				{loading ? 
+					<LoadingScreen visible={loading} />
+				:
+					<View>
+						{/* CAROUSEL: */}
+						<View style={globalStyles.carouselSelection}>
+							{selectedVehicle ? (					
+								<VehicleCarousel
+									vehicles={vehicles}
+									selectedIndex={selectedIndex}
+									onChangeIndex={setSelectedIndex}
+									setCurrentScreen={setCurrentScreen}
+								/>
+							) : (
+								<Text>No hay vehículos disponibles</Text>
+							)}
+						</View>
+						
+						{/* CRUD BUTTONS: */}
+						<View style={globalStyles.vehicleActionBtns}>				
+							<TouchableOpacity style={globalStyles.registerVehicleBtn}
+								onPress={()=> setCurrentScreen('register')}					
+								activeOpacity={0.7}
+								hitSlop={10}
+							>
+								<Text style={{ color: 'white' }}>Registrar Vehículo </Text>
+								<Ionicons name='add-outline' size={28} color='white' />
+							</TouchableOpacity>					
+						</View>
+					</View>
+				}				
+			</View>									
 		</View>
 	);	
 }

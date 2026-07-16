@@ -4,8 +4,9 @@ import { globalStyles } from './globalStyles';
 import { regexPatterns } from './regexPatterns';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
+//import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
+import { api } from './api';
 
 export default function LoginScreen({ setCurrentScreen }) {
 		
@@ -19,7 +20,7 @@ export default function LoginScreen({ setCurrentScreen }) {
 	const [loading, setLoading] = useState(false);
 	const [showPasswordText, setShowPasswordText] = useState(false);
 	
-	const API_URL = "http://localhost:3000";
+	//const API_URL = "http://localhost:3000";
 	
 	
 	const validateUsercode = (text) => {
@@ -52,7 +53,8 @@ export default function LoginScreen({ setCurrentScreen }) {
 	const handleLogin = async () => {
 		try {
 			setLoading(true);
-			const res = await axios.get(`${API_URL}/users`, {
+			//const res = await axios.get(`${API_URL}/users`, {
+			const res = await api.get("/users", {
 				params: {
 					usercode,
 					password
