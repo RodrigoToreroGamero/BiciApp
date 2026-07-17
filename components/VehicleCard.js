@@ -14,6 +14,8 @@ export default function VehicleCard({ vehicle, setCurrentScreen }) {
 		setMenuOpen(false);
 	};
 	
+	console.log(vehicle.image);	
+	
 	return (
 		<View style={globalStyles.card}>
 			<ImageContainer image={vehicle.image} useSetBtn={false} />

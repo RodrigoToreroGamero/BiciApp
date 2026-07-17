@@ -4,7 +4,6 @@ import { globalStyles } from './globalStyles';
 import { Ionicons } from '@expo/vector-icons';
 import VehicleCarousel from './VehicleCarousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import axios from 'axios';
 import LoadingScreen from './LoadingScreen';
 import { api } from './api';
 
@@ -13,8 +12,7 @@ export default function SelectScreen({ setCurrentScreen }) {
 	const [vehicles, setVehicles] = useState([]);
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const selectedVehicle = vehicles.length > 0 ? vehicles[selectedIndex] : null;
-	const [loading, setLoading] = useState(false);
-	//const API_URL = "http://localhost:3000";
+	const [loading, setLoading] = useState(false);	
 	
 	const logout = async () => {
 		try {

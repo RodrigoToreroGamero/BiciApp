@@ -7,10 +7,15 @@ import axios from 'axios';
 import SelectorModal from './SelectorModal';
 import * as Crypto from 'expo-crypto';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function RegisterScreen({ setCurrentScreen }) {
 	
 	const API_URL = "http://localhost:3000";
+	const MULTER_UPLOAD = "image";	
+	const MIN_WIDTH = 100;
+	const MIN_HEIGHT = 100;
+	const MAX_IMG_SIZE = 5 * 1024 * 1024; // 5 MB
 	
 	const [image, setImage] = useState("");
 	const [vehicleTypes, setVehicletypes] = useState([]);
@@ -37,21 +42,70 @@ export default function RegisterScreen({ setCurrentScreen }) {
 		};
 		loadData();
 	}, []);
+			
+	const pickImage = async () => {
+		const result = await ImagePicker.launchImageLibraryAsync({
+			mediaTypes: ["image"],
+			quality: 1
+		});
+		
+		if(result.canceled) {
+			return;
+		}
+		
+		const asset = result.assets[0];		
+		
+		console.log(asset);
+		
+		if(asset.width < MIN_WIDTH || asset.height < MIN_HEIGHT) {
+			alert(`Imagen debe medir mínimo ${MIN_WIDTH}x${MIN_HEIGHT} pixeles.`);
+			return;
+		}
+		
+		if(asset.fileSize > MAX_IMG_SIZE) {
+			alert("Imagen no debe superar los 5 MB.");
+			return;
+		}
+		
+		setImage(asset);
+	}
 	
-	const registerNewVehicle = async (type, brand, color) => {
+	const registerNewVehicle = async (type, brand, color, image) => {
 						
 		try {
 			const userToken = await AsyncStorage.getItem("userToken");	
 			const barcode = `VMP-${Crypto.randomUUID()}`;
+			const formData = new FormData();
 			
-			const newVehicle = {				
-				usercode: userToken,			
-				type: type,
-				barcode: barcode,
-				brand: brand,
-				color: color
-			};
-			axios.post(`${API_URL}/vehicles/`, newVehicle);
+			formData.append("usercode", userToken);
+			formData.append("type", type);
+			formData.append("barcode", barcode);
+			formData.append("brand", brand);
+			formData.append("color", color);
+			
+			console.log("Imagen antes de enviar registro: ", image);
+			
+			if(image) {
+				/*
+				formData.append(MULTER_UPLOAD, {
+					uri: image.uri,
+					name: image.fileName ?? "vehicle.jpg",
+					type: image.mimeType ?? "image/jpeg"
+				});				
+				*/
+				formData.append(MULTER_UPLOAD, image.file, image.fileName ?? "vehicle.jpg");
+			}
+			
+			await axios.post(
+				`${API_URL}/vehicles`,
+				formData,
+				{
+					headers: {
+						"Content-type": "multipart/form-data"
+					}
+				}
+			);
+									
 		} catch(err) {
 			console.log("Error al registrar vehículo: ",err);
 		} finally {			
@@ -68,7 +122,11 @@ export default function RegisterScreen({ setCurrentScreen }) {
 			</View>
 			<View style={globalStyles.background}>
 				
-				<ImageContainer image={image} setImage={setImage} useSetBtn={true} />
+				<ImageContainer 
+					image={image} 
+					setImage={setImage} 
+					useSetBtn={pickImage} 
+				/>
 				
 				<View style={globalStyles.formContainer}>
 					<SelectorModal
@@ -106,7 +164,13 @@ export default function RegisterScreen({ setCurrentScreen }) {
 						<Ionicons name='return-down-back' size={28} color='black' />						
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={globalStyles.acceptBtn} onPress={()=> registerNewVehicle()}>
+					<TouchableOpacity style={globalStyles.acceptBtn} 
+						onPress={()=> registerNewVehicle(
+							selectedType,
+							selectedBrand,
+							selectedColor,
+							image
+						)}>
 						<Ionicons name='checkmark' size={28} color='black' />					
 					</TouchableOpacity>
 				</View>							
